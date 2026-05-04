@@ -17,7 +17,8 @@ pipeline {
 
         stage('Deploy Green') {
             steps {
-                sh 'kubectl apply -f deployment-green.yaml --validate=false'
+                sh 'kubectl get nodes'
+                sh 'kubectl apply -f deployment-green.yaml --validate=false --kubeconfig=/var/jenkins_home/.kube/config'
             }
         }
 
